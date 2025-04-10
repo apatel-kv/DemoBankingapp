@@ -30,70 +30,87 @@ class CustomBottomSheetContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDialog = MediaQuery.of(context).size.width >= 800;
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Header Row
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "¿Qué deseas solicitar?",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
+        child: SizedBox(
+          width: isDialog ? 500 : double.infinity,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "¿Qué deseas solicitar?",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
 
-            const Text(
-              "Descubre y elige la opción que te ayudará a lograr tus metas.",
-              style: TextStyle(fontSize: 14),
-            ),
-            const SizedBox(height: 16),
+              const Text(
+                "Descubre y elige la opción que te ayudará a lograr tus metas.",
+                style: TextStyle(fontSize: 14),
+              ),
+              const SizedBox(height: 16),
 
-            // Option Cards with Border
-            _buildCardTile(
-              icon: Icons.monetization_on,
-              title: "Crédito de consumo",
-              subtitle: "Simula y solicita tu crédito.",
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const OfflineScreen()));
-              },
-            ),
-            _buildCardTile(
-              icon: Icons.credit_card,
-              title: "Tarjeta de crédito",
-              subtitle: "Solicita y disfruta de beneficios",
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const OfflineScreen()));
-              },
-            ),
-            _buildCardTile(
-              icon: Icons.savings,
-              title: "Cuenta de ahorros",
-              subtitle: "Abre una cuenta de inmediato y sin costo",
-             onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const OfflineScreen()));
-              },
-            ),
-            _buildCardTile(
-              icon: Icons.account_balance_wallet,
-              title: "Cuenta Nómina",
-              subtitle: "Abre una cuenta para recibir tu sueldo de forma automática.",
-             onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const OfflineScreen()));
-              },
-            ),
-
-            const SizedBox(height: 20),
-          ],
+              // Option Cards
+              _buildCardTile(
+                icon: Icons.monetization_on,
+                title: "Crédito de consumo",
+                subtitle: "Simula y solicita tu crédito.",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const OfflineScreen()),
+                  );
+                },
+              ),
+              _buildCardTile(
+                icon: Icons.credit_card,
+                title: "Tarjeta de crédito",
+                subtitle: "Solicita y disfruta de beneficios",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const OfflineScreen()),
+                  );
+                },
+              ),
+              _buildCardTile(
+                icon: Icons.savings,
+                title: "Cuenta de ahorros",
+                subtitle: "Abre una cuenta de inmediato y sin costo",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const OfflineScreen()),
+                  );
+                },
+              ),
+              _buildCardTile(
+                icon: Icons.account_balance_wallet,
+                title: "Cuenta Nómina",
+                subtitle:
+                    "Abre una cuenta para recibir tu sueldo de forma automática.",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const OfflineScreen()),
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
