@@ -1,5 +1,6 @@
 import 'package:demoapp/screens/IdentificationScreen.dart';
 import 'package:flutter/material.dart';
+
 class UserCreationScreen extends StatefulWidget {
   const UserCreationScreen({super.key});
 
@@ -14,6 +15,16 @@ class _UserCreationScreenState extends State<UserCreationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context); // Go back to previous screen
+          },
+        ),
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isDesktop = constraints.maxWidth >= 800;
