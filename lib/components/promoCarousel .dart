@@ -45,7 +45,7 @@ class PromoCarousel extends StatelessWidget {
             "Descubre las promociones disponibles",
             style: TextStyle(color: Colors.grey),
           ),
-          const SizedBox(height: 24),
+          
           CarouselSlider(
   options: CarouselOptions(
               height: screenHeight * 0.4, // 40% of screen height
