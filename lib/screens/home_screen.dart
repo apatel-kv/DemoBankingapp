@@ -103,42 +103,59 @@ class HomeScreen extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.white,
             toolbarHeight: 50,
-            leadingWidth: 250,
-            leading: Padding(
-              padding: const EdgeInsets.only(left: 16.0),
-              child: Image.asset(
-                'assets/images/logo-bb-mobile.png',
-                fit: BoxFit.contain,
-              ),
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            surfaceTintColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            title: Row(
+              children: [
+                Builder(
+                  builder: (context) {
+                    final isDesktop = MediaQuery.of(context).size.width >= 1024;
+                    final canPop = Navigator.canPop(context);
+                    if (isDesktop && canPop) {
+                      return IconButton(
+                        icon: const Icon(Icons.arrow_back, color: Colors.black),
+                        onPressed: () => Navigator.pop(context),
+                        tooltip: 'Volver',
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  },
+                ),
+                const SizedBox(width: 8),
+                Image.asset(
+                  'assets/images/logo-bb-mobile.png',
+                  height: 30,
+                  fit: BoxFit.contain,
+                ),
+              ],
             ),
           ),
           backgroundColor: Colors.white,
-          body: Center(
+          body: Align(
+            alignment: Alignment.topCenter,
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 1000),
               child: SingleChildScrollView(
                 physics: const ClampingScrollPhysics(),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Center(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.sunny_snowing,
-                            color: Color.fromARGB(255, 150, 158, 157),
-                            size: 40,
-                          ),
-                          const SizedBox(width: 8),
-                          const Text(
-                            '¡Bienvenido!',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.sunny_snowing,
+                          color: Color.fromARGB(255, 150, 158, 157),
+                          size: 40,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          '¡Bienvenido!',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 24),
                     Container(
