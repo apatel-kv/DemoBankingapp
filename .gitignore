@@ -44,3 +44,15 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# lock file
+pubspec.lock
+
+.flutter-plugins
+.flutter-plugins-dependencies
+/android/
+/flutter/
+# Ignore generated plugin registrant files and CMake files
+linux/flutter/generated_*
+windows/flutter/generated_*
+macos/GeneratedPluginRegistrant.*
