@@ -1,14 +1,20 @@
 import 'package:demoapp/components/footer_section.dart';
+import 'package:demoapp/components/google_maps.dart';
 import 'package:demoapp/components/login_button.dart';
 import 'package:demoapp/components/promoCarousel%20.dart';
 import 'package:demoapp/screens/blog_screen.dart';
 import 'package:flutter/material.dart';
 
-class Landingscreen extends StatelessWidget {
-  final Color tealColor = const Color(0xFF007F8B); // Teal background color
+class Landingscreen extends StatefulWidget {
 
   const Landingscreen({super.key});
 
+  @override
+  State<Landingscreen> createState() => _LandingscreenState();
+}
+
+class _LandingscreenState extends State<Landingscreen> {
+  final Color tealColor = const Color(0xFF007F8B); 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,6 +107,7 @@ class Landingscreen extends StatelessWidget {
               const BlogPage(),
               
               PromoCarousel(),
+              const GoogleMapSection(),
               const FooterSection()
             ],
           ),
